@@ -22,6 +22,13 @@
   },
   "dependencies": {
     "@aws-cdk/core": "1.83.0",
+    "@aws-cdk/aws-codebuild": "1.83.0",
+    "@aws-cdk/aws-codecommit": "1.83.0",
+    "@aws-cdk/aws-codepipeline": "1.83.0",
+    "@aws-cdk/aws-codepipeline-actions": "1.83.0",
+    "@aws-cdk/aws-ecr": "1.83.0",
+    "@aws-cdk/aws-iam": "1.83.0",
+    "@aws-cdk/aws-s3": "1.83.0",
     "source-map-support": "^0.5.16"
   }
 }

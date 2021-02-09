@@ -1,14 +1,23 @@
-# Welcome to your CDK TypeScript project!
+# Docker build pipeline
 
-This is a blank project for TypeScript development with CDK.
+This CDK project builds a Docker image on AWS. It uses these two packages
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+- [SimpleDockerRepo](https://github.com/alexhnguyen/SimpleDockerRepo)
+- [SkeletonPythonPkg](https://github.com/alexhnguyen/SkeletonPythonPkg)
 
-## Useful commands
+![BuildDockerImageCdk](images/BuildDockerImageCdk.png)
 
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+Whenever the Github project `SimpleDockerRepo` is updated, the first AWS Code
+Build is triggered, informing us we need to do some other action.
+
+Afterwards, the second Code Build gets triggered. The second Code Build creates
+the Docker image, and performs tasks like installing Python packages.
+
+Once the Docker image is built, AWS Code Build pushes it to ECR for consumption.
+
+---
+
+Inspired from https://mlops-and-integrations.workshop.aws/cicd/run_pipeline.html
+
+Unfortunately that is only written in CloudFormation. This project switches it
+to use CDK.
